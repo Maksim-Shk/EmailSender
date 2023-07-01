@@ -13,15 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F244918A-4E0A-442A-95EA-7A618854AC97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSender.Domain", "EmailSender.Domain\EmailSender.Domain.csproj", "{7C13931D-1AD8-4CA7-AFF9-9BBB29A81AC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSender.Domain", "EmailSender.Domain\EmailSender.Domain.csproj", "{7C13931D-1AD8-4CA7-AFF9-9BBB29A81AC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSender.Application", "EmailSender.Application\EmailSender.Application.csproj", "{5E201980-DEA0-4C23-9D85-E3A8D5895E32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSender.Application", "EmailSender.Application\EmailSender.Application.csproj", "{5E201980-DEA0-4C23-9D85-E3A8D5895E32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSender.Persistence", "EmailSender.Persistence\EmailSender.Persistence.csproj", "{62152500-CFC8-405D-A848-C2C7C498EB70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSender.Persistence", "EmailSender.Persistence\EmailSender.Persistence.csproj", "{62152500-CFC8-405D-A848-C2C7C498EB70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailService.Server", "EmailService\Server\EmailService.Server.csproj", "{CBE93C9B-E9DC-4C52-9469-FB5B6CC24933}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSender.Server", "EmailService\Server\EmailSender.Server.csproj", "{CBE93C9B-E9DC-4C52-9469-FB5B6CC24933}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailService.Client", "EmailService\Client\EmailService.Client.csproj", "{B2D0B83D-73EB-4859-B543-E99A666AA075}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSender.Client", "EmailSender\Client\EmailSender.Client.csproj", "{4DDC3FAE-0F19-46DF-A0E2-C60CBBC7D6CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +45,10 @@ Global
 		{CBE93C9B-E9DC-4C52-9469-FB5B6CC24933}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBE93C9B-E9DC-4C52-9469-FB5B6CC24933}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBE93C9B-E9DC-4C52-9469-FB5B6CC24933}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2D0B83D-73EB-4859-B543-E99A666AA075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2D0B83D-73EB-4859-B543-E99A666AA075}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2D0B83D-73EB-4859-B543-E99A666AA075}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2D0B83D-73EB-4859-B543-E99A666AA075}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DDC3FAE-0F19-46DF-A0E2-C60CBBC7D6CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DDC3FAE-0F19-46DF-A0E2-C60CBBC7D6CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DDC3FAE-0F19-46DF-A0E2-C60CBBC7D6CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DDC3FAE-0F19-46DF-A0E2-C60CBBC7D6CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,7 +61,7 @@ Global
 		{5E201980-DEA0-4C23-9D85-E3A8D5895E32} = {AA54EDBB-9D38-417F-8919-DB2EDFF564A5}
 		{62152500-CFC8-405D-A848-C2C7C498EB70} = {F244918A-4E0A-442A-95EA-7A618854AC97}
 		{CBE93C9B-E9DC-4C52-9469-FB5B6CC24933} = {028358FB-73B3-481E-8C5F-9B7446B6A6B6}
-		{B2D0B83D-73EB-4859-B543-E99A666AA075} = {EBBE1FBF-F107-47A8-8349-2F1C42B2B785}
+		{4DDC3FAE-0F19-46DF-A0E2-C60CBBC7D6CC} = {EBBE1FBF-F107-47A8-8349-2F1C42B2B785}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8B535D2-315C-40A1-98AD-3316D12E5A9F}

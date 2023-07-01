@@ -22,7 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\EmailSender.Application\EmailSender.Application.csproj" />
     <ProjectReference Include="..\..\EmailSender.Persistence\EmailSender.Persistence.csproj" />
-    <ProjectReference Include="..\Client\EmailService.Client.csproj" />
+    <ProjectReference Include="..\..\EmailSender\Client\EmailSender.Client.csproj" />
   </ItemGroup>
 
   <ItemGroup>
