@@ -12,7 +12,7 @@ namespace EmailSender.Application.Common.Behaviors
             _validators = validators;
 
         public Task<TResponse> Handle(TRequest request,
-            CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+           RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
             var context = new ValidationContext<TRequest>(request);
             var failures = _validators
