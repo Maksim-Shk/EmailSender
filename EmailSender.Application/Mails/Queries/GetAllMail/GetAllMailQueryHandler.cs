@@ -10,13 +10,14 @@ using System.Threading.Tasks;
 
 namespace EmailSender.Application.Mails.Queries.GetAllMail
 {
-    public class GetAllMailQueryHandler 
+    public class GetAllMailQueryHandler
         : IRequestHandler<GetAllMailQuery, MailListVm>
     {
         private readonly IMailContext _dbContext;
 
         public GetAllMailQueryHandler(IMailContext dbContext)
-            => (_dbContext) = dbContext;
+            => (_dbContext) = (dbContext);
+
 
         public async Task<MailListVm> Handle(GetAllMailQuery request,
             CancellationToken cancellationToken)
@@ -42,7 +43,7 @@ namespace EmailSender.Application.Mails.Queries.GetAllMail
                     {
                         Recipient = recipient.Recipient,
                         Result = recipient.Result,
-                        ResultDescription = recipient.ResultDescription
+                        FailedMessage = recipient.FailedMessage
                     };
                     MailDto.SentMails.Add(sentMailDto);
                 }
@@ -51,7 +52,5 @@ namespace EmailSender.Application.Mails.Queries.GetAllMail
 
             return new MailListVm { Mails = mailDtos };
         }
-
-
     }
 }

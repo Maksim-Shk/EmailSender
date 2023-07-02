@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EmailSender.Persistence.Migrations
 {
     [DbContext(typeof(MailContext))]
-    [Migration("20230702082013_InitialCreate")]
+    [Migration("20230702211153_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -35,9 +35,8 @@ namespace EmailSender.Persistence.Migrations
                         .HasDefaultValueSql("gen_random_uuid()");
 
                     b.Property<string>("Body")
-                        .IsRequired()
                         .HasMaxLength(384000)
-                        .HasColumnType("character varying(384000)")
+                        .HasColumnType("text")
                         .HasColumnName("Body");
 
                     b.Property<DateTime>("CreatedDate")
@@ -53,7 +52,7 @@ namespace EmailSender.Persistence.Migrations
                     b.Property<string>("Subject")
                         .IsRequired()
                         .HasMaxLength(1000)
-                        .HasColumnType("text")
+                        .HasColumnType("character varying(1000)")
                         .HasColumnName("Subject");
 
                     b.HasKey("MailId")
@@ -69,6 +68,11 @@ namespace EmailSender.Persistence.Migrations
                         .HasColumnType("text")
                         .HasColumnName("SentMailId")
                         .HasDefaultValueSql("gen_random_uuid()");
+
+                    b.Property<string>("FailedMessage")
+                        .HasMaxLength(1024)
+                        .HasColumnType("character varying(1024)")
+                        .HasColumnName("FailedMessage");
 
                     b.Property<string>("MailId")
                         .IsRequired()
@@ -86,15 +90,8 @@ namespace EmailSender.Persistence.Migrations
                         .HasMaxLength(16)
                         .IsUnicode(false)
                         .HasColumnType("character varying")
-                        .HasDefaultValue("Failed")
+                        .HasDefaultValue("OK")
                         .HasColumnName("Result");
-
-                    b.Property<string>("ResultDescription")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(1024)
-                        .HasColumnType("character varying(1024)")
-                        .HasDefaultValue("Некорректная отправка")
-                        .HasColumnName("ResultDescription");
 
                     b.HasKey("SentMailId")
                         .HasName("sentmail_pkey");

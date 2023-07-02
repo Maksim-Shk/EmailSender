@@ -16,17 +16,13 @@ namespace EmailSender.Server.Models
         public string Subject { get; set; }
         [Required]
         public string? Body { get; set; }
-        [Required]
-        public string Sender { get; set; }
         public void Mapping(Profile profile)
         {
             profile.CreateMap<CreateMailDto, CreateMailCommand>()
                 .ForMember(mailCommand => mailCommand.Subject,
                     opt => opt.MapFrom(mailDto => mailDto.Subject))
                 .ForMember(mailCommand => mailCommand.Body,
-                    opt => opt.MapFrom(mailDto => mailDto.Body))
-                 .ForMember(mailCommand => mailCommand.Sender,
-                    opt => opt.MapFrom(mailDto => mailDto.Sender));
+                    opt => opt.MapFrom(mailDto => mailDto.Body));
         }
     }
 }

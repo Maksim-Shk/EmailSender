@@ -7,7 +7,6 @@ namespace EmailSender.Application.Mails.Commands.CreateMail
     {
         public string Subject { get; set; }
         public string? Body { get; set; }
-        public string Sender { get; set; }
         public List<string> Recipients { get; set; }
 
         public void Mapping(Profile profile)
@@ -17,8 +16,6 @@ namespace EmailSender.Application.Mails.Commands.CreateMail
                    opt => opt.MapFrom(dto => dto.Subject))
                      .ForMember(mail => mail.Body,
                    opt => opt.MapFrom(dto => dto.Body))
-                     .ForMember(mail => mail.Sender,
-                   opt => opt.MapFrom(dto => dto.Sender))
                      .ForMember(mail => mail.Recipients,
                    opt => opt.MapFrom(dto => dto.Recipients));
         }

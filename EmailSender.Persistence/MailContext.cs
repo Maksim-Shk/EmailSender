@@ -81,12 +81,11 @@ namespace EmailSender.Persistence
                     .HasColumnType("character varying")
                     .HasMaxLength(16)
                     .HasColumnName("Result")
-                    .HasDefaultValue(ResultEnum.Failed);
+                    .HasDefaultValue(ResultEnum.OK);
 
-                entity.Property(e => e.ResultDescription)
+                entity.Property(e => e.FailedMessage)
                     .HasMaxLength(1024)
-                    .HasColumnName("ResultDescription")
-                    .HasDefaultValue("Некорректная отправка");
+                    .HasColumnName("FailedMessage");
 
                 entity.HasOne<Mail>(s => s.Mail)
                     .WithMany(u => u.Recipients)

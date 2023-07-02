@@ -21,8 +21,8 @@ namespace EmailSender.Persistence.Migrations
                 {
                     MailId = table.Column<string>(type: "text", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     Sender = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Subject = table.Column<string>(type: "text", maxLength: 1000, nullable: false),
-                    Body = table.Column<string>(type: "character varying(384000)", maxLength: 384000, nullable: false),
+                    Subject = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
+                    Body = table.Column<string>(type: "text", maxLength: 384000, nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
@@ -38,8 +38,8 @@ namespace EmailSender.Persistence.Migrations
                     SentMailId = table.Column<string>(type: "text", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     MailId = table.Column<string>(type: "text", nullable: false),
                     Recipient = table.Column<string>(type: "text", nullable: false),
-                    Result = table.Column<string>(type: "character varying", unicode: false, maxLength: 16, nullable: false, defaultValue: "Failed"),
-                    ResultDescription = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: true, defaultValue: "Некорректная отправка")
+                    Result = table.Column<string>(type: "character varying", unicode: false, maxLength: 16, nullable: false, defaultValue: "OK"),
+                    FailedMessage = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: true)
                 },
                 constraints: table =>
                 {

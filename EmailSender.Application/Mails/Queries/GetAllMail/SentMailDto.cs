@@ -6,6 +6,6 @@ namespace EmailSender.Application.Mails.Queries.GetAllMail
     {
         public string Recipient { get; set; }
         public ResultEnum Result { get; set; }
-        public string? ResultDescription { get; set; }
+        public string? FailedMessage { get; set; }
     }
 }

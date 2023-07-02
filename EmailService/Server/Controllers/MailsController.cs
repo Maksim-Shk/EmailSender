@@ -2,26 +2,25 @@
 using EmailSender.Application.Interfaces;
 using EmailSender.Application.Mails.Commands.CreateMail;
 using EmailSender.Application.Mails.Queries.GetAllMail;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmailSender.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class MailController : BaseController
+    [Route("api/[controller]")]
+    public class MailsController : BaseController
     {
         private readonly IMapper _mapper;
         private readonly IMailContext _dbContext;
 
-        public MailController(
+        public MailsController(
            IMapper mapper, IMailContext dbContext)
         {
             _mapper = mapper;
             _dbContext = dbContext;
         }
 
-        [HttpPost("CreateMail")]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<string>> CreateMail([FromBody] CreateMailDto createMailDto)
         {
@@ -35,11 +34,11 @@ namespace EmailSender.Server.Controllers
         /// </summary>
         /// <remarks>
         /// Sample request:
-        /// GET /mail/get-all-mails
+        /// GET api/mails/
         /// </remarks>
         /// <returns>Returns MailListVm</returns>
         /// <response code="200">Success</response>
-        [HttpGet("get-all-mails")]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<MailListVm>> GetAllMails()
         {
