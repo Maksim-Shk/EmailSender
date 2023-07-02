@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -23,10 +23,6 @@
     <ProjectReference Include="..\..\EmailSender.Application\EmailSender.Application.csproj" />
     <ProjectReference Include="..\..\EmailSender.Persistence\EmailSender.Persistence.csproj" />
     <ProjectReference Include="..\..\EmailSender\Client\EmailSender.Client.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 
