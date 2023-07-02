@@ -42,7 +42,7 @@ namespace EmailSender.Application.Mails.Queries.GetAllMail
                     var sentMailDto = new SentMailDto
                     {
                         Recipient = recipient.Recipient,
-                        Result = recipient.Result,
+                        Result = recipient.Result.ToString(),
                         FailedMessage = recipient.FailedMessage
                     };
                     MailDto.SentMails.Add(sentMailDto);

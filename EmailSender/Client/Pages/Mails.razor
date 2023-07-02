@@ -1,0 +1,55 @@
+﻿@page "/mails"
+@using Blazorise.DataGrid
+@using Client.Models;
+@using System.Text.Json;
+@using System.Text.Json.Serialization;
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+
+<PageTitle>Просмотр писем</PageTitle>
+
+<DataGrid TItem="GetAllMailsModel"
+          Data="@mailListVm.Mails"
+          Responsive
+          Filterable
+          Sortable
+          SortMode="DataGridSortMode.Multiple"
+          ShowPager
+          ShowPageSizes
+          PagerPosition="DataGridPagerPosition.Bottom"
+          PagerOptions="new(){ ButtonSize=Blazorise.Size.Medium}">
+
+    <DataGridColumns>
+        <DataGridColumn Field="@nameof(GetAllMailsModel.Subject)" Caption="Тема">
+            <DisplayTemplate>
+                @{
+                    var subject = (context as GetAllMailsModel)?.Subject;
+                    var id = (context as GetAllMailsModel)?.MailId;
+                    if (subject != null)
+                    {
+                        <a href="Mail/@id">@subject</a>
+                    }
+                }
+            </DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Field="@nameof(GetAllMailsModel.Sender)" Caption="Отправитель"></DataGridColumn>
+        <DataGridColumn Field="@nameof(GetAllMailsModel.CreatedDate)" Caption="Дата создания"></DataGridColumn>
+    </DataGridColumns>
+
+</DataGrid>
+
+
+@code {
+    private MailListVm mailListVm = new();
+    protected override async Task OnInitializedAsync()
+    {
+        var options = new JsonSerializerOptions()
+            {
+                ReferenceHandler = ReferenceHandler.Preserve,
+                PropertyNameCaseInsensitive = true
+            };
+        mailListVm.Mails = new List<GetAllMailsModel>();
+        mailListVm = await Http.GetFromJsonAsync<MailListVm>("api/Mails", options);
+        var a = 2 + 2;
+    }
+}

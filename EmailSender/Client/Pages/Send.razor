@@ -1,0 +1,103 @@
+﻿@page "/send"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@using Client.Models;
+@using System.Text.RegularExpressions;
+
+<PageTitle>Отправить письмо</PageTitle>
+
+<h6>Тема письма</h6>
+<TextEdit id="Title" class="form-control" @ref="subject">
+</TextEdit>
+
+<h6>Текст письма</h6>
+<RichTextEdit @ref="body"
+              Theme="RichTextEditTheme.Snow"
+              ContentChanged="@OnContentChanged"
+              PlaceHolder="Type your post here..."
+              ReadOnly="@readOnly"
+              SubmitOnEnter="false"
+              ToolbarPosition="Placement.Bottom">
+    <Editor>My example content</Editor>
+    <Toolbar>
+        <RichTextEditToolbarGroup>
+            <RichTextEditToolbarButton Action="RichTextEditAction.Bold" />
+            <RichTextEditToolbarButton Action="RichTextEditAction.Italic" />
+            <RichTextEditToolbarSelect Action="RichTextEditAction.Size">
+                <RichTextEditToolbarSelectItem Value="small" />
+                <RichTextEditToolbarSelectItem Selected />
+                <RichTextEditToolbarSelectItem Value="large" />
+                <RichTextEditToolbarSelectItem Value="huge">Very Big</RichTextEditToolbarSelectItem>
+            </RichTextEditToolbarSelect>
+            <RichTextEditToolbarButton Action="RichTextEditAction.List" Value="ordered" />
+            <RichTextEditToolbarButton Action="RichTextEditAction.List" Value="bullet" />
+        </RichTextEditToolbarGroup>
+    </Toolbar>
+</RichTextEdit>
+
+<h6>Получатели (через запятую)</h6>
+<TextEdit id="Title" class="form-control" @ref="recipients" Placeholder="example@email.com, anotherEx@gmail.com, ...">
+</TextEdit>
+
+<Button Color=" Color.Primary" Float="Float.Default" Size="Size.Medium" Clicked="@SendEmail" TextAlignment="TextAlignment.Center">
+    <Icon Name="IconName.Mail"/> Отправить
+</Button>
+
+
+@code{
+    protected RichTextEdit body;
+    protected bool readOnly;
+    protected string contentAsHtml;
+    protected string contentAsDeltaJson;
+    protected string contentAsText;
+    protected string savedContent;
+
+    private CreateMailModel createMailModel = new();
+
+    protected TextEdit subject;
+    protected TextEdit recipients;
+
+
+    public async Task OnContentChanged()
+    {
+        contentAsHtml = await body.GetHtmlAsync();
+        contentAsDeltaJson = await body.GetDeltaAsync();
+        contentAsText = await body.GetTextAsync();
+    }
+
+    public async Task SendEmail()
+    {
+        createMailModel.Subject = subject.Text;
+        createMailModel.Body = await body.GetHtmlAsync();
+        createMailModel.Recipients = ParseEmails(recipients.Text);
+        var httpResponse = await Http.PostAsJsonAsync<CreateMailModel>("api/Mails", createMailModel);
+
+    }
+
+    public static List<string> ParseEmails(string input)
+    {
+        List<string> emails = new List<string>();
+
+        string[] emailArray = input.Split(',');
+
+        foreach (string email in emailArray)
+        {
+            string trimmedEmail = email.Trim();
+
+            if (IsValidEmail(trimmedEmail))
+            {
+                emails.Add(trimmedEmail);
+            }
+        }
+
+        return emails;
+    }
+
+    private static bool IsValidEmail(string email)
+    {
+        // Проверка допустимости email
+        string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+        Regex regex = new Regex(emailPattern);
+        return regex.IsMatch(email);
+    }
+}

@@ -14,15 +14,17 @@
 
 <body>
     <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text"></div>
+        <div style="position:absolute; top:30vh; width:100%; text-align:center">
+            <h1>Почтовый отправитель - тестовое задание</h1>
+            <div style="display:flex; gap:10px; justify-content:center; align-items:center">
+                <div class="spinner-border" role="status"></div>
+                Пожалуйста, подождите...
+            </div>
+        </div>
     </div>
 
     <div id="blazor-error-ui">
-        An unhandled error has occurred.
+        Произошло необработанное исключение
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>

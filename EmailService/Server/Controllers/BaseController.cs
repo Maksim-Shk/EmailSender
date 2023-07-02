@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EmailSender.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public abstract class BaseController : ControllerBase
     {
         private IMediator _mediator;

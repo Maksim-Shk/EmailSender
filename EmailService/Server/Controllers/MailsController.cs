@@ -19,7 +19,15 @@ namespace EmailSender.Server.Controllers
             _mapper = mapper;
             _dbContext = dbContext;
         }
-
+        /// <summary>
+        /// Send mail
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// POST api/mails/
+        /// </remarks>
+        /// <returns>Returns email id</returns>
+        /// <response code="200">Success</response>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<string>> CreateMail([FromBody] CreateMailDto createMailDto)

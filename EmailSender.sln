@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSender.Persistence", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSender.Server", "EmailService\Server\EmailSender.Server.csproj", "{CBE93C9B-E9DC-4C52-9469-FB5B6CC24933}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSender.Client", "EmailSender\Client\EmailSender.Client.csproj", "{4DDC3FAE-0F19-46DF-A0E2-C60CBBC7D6CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSender.Client", "EmailSender\Client\EmailSender.Client.csproj", "{4DDC3FAE-0F19-46DF-A0E2-C60CBBC7D6CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,9 +1,6 @@
-﻿using EmailSender.Domain;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-
-namespace EmailSender.Application.Mails.Queries.GetAllMail
+﻿namespace EmailSender.Client.Models
 {
-    public class SentMailDto
+    public class SentMailModel
     {
         /// <summary>
         /// почтовый ящик получателя

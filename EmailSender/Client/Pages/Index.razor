@@ -1,9 +1,36 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Почтовый отправитель</PageTitle>
 
-<h1>Hello, world!</h1>
+Представляю тестовое задание.
 
-Welcome to your new app.
+Реализована отправка писем по SMTP.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<CardDeck>
+    <Card>
+        <CardTitle>
+            <h3>Посмотреть методы API в Swagger</h3>
+        </CardTitle>
+        <CardBody>
+            <Button Type="ButtonType.Link" Color=" Color.Primary" To="/swagger" Float="Float.Default" Size="Size.Medium" TextAlignment="TextAlignment.Center">
+                <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ArrowRight" /> Перейти
+            </Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardTitle>
+            <h3>Отправить письмо</h3>
+        </CardTitle>
+        <Button Type="ButtonType.Link" Color=" Color.Primary" To="/send" Float="Float.Default" Size="Size.Medium" TextAlignment="TextAlignment.Center">
+            <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ArrowRight" /> Перейти
+        </Button>
+    </Card>
+    <Card>
+        <CardTitle>
+            <h3>Посмотреть письма в табличном виде</h3>
+        </CardTitle>
+        <Button Type="ButtonType.Link" Color=" Color.Primary" To="/mails" Float="Float.Default" Size="Size.Medium" TextAlignment="TextAlignment.Center">
+            <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ArrowRight" /> Перейти
+        </Button>
+    </Card>
+</CardDeck>
