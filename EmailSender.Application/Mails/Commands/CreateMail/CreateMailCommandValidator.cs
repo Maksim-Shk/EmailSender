@@ -9,6 +9,7 @@ namespace EmailSender.Application.Mails.Commands.CreateMail
         {
             RuleFor(mail=>mail.Body).MaximumLength(384000);
             RuleFor(mail => mail.Subject).MaximumLength(1000);
+            RuleFor(mail => mail.Recipients).NotEmpty();
         }
     }
 }

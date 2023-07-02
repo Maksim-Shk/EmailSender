@@ -5,8 +5,17 @@ namespace EmailSender.Application.Mails.Commands.CreateMail
 {
     public class CreateMailDto : IMapWith<CreateMailCommand>
     {
+        /// <summary>
+        /// Тема письма
+        /// </summary>
         public string Subject { get; set; }
+        /// <summary>
+        /// Тело письма
+        /// </summary>
         public string? Body { get; set; }
+        /// <summary>
+        /// Получатели письма
+        /// </summary>
         public List<string> Recipients { get; set; }
 
         public void Mapping(Profile profile)

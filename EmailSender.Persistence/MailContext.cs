@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using EmailSender.Application.Interfaces;
 using EmailSender.Domain;
-using Microsoft.Extensions.Options;
 
 namespace EmailSender.Persistence
 {
@@ -11,23 +8,11 @@ namespace EmailSender.Persistence
     {
         public MailContext(DbContextOptions<MailContext> options)
             : base(options) { }
-
-        //public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<Mail> Mails { get; set; } = null!;
         public virtual DbSet<SentMail> SentMails { get; set; } = null!;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("public");
-
-            //modelBuilder.Entity<User>(entity =>
-            //{
-            //    entity.HasKey(e => e.Email).HasName("user_pkey");
-
-            //    entity.ToTable("User");
-
-            //    entity.Property(e => e.Email)
-            //       .HasColumnName("Email");
-            //});
 
             modelBuilder.Entity<Mail>(entity =>
             {
