@@ -4,7 +4,7 @@ networks:
     driver: bridge
 
 services:
-  taskmanager.server:
+  emailsender.server:
     image: docker.io/library/emailsenderserver
     depends_on:
         - "app_db"
