@@ -1,14 +1,22 @@
 ﻿@page "/"
 
 <PageTitle>Почтовый отправитель</PageTitle>
+<hr />
+<h2 style="text-align: center">Тестовое задание - почтовый отправитель</h2>
+<hr />
+<h6>Автор: Максим </h6>
 
-Представляю тестовое задание.
+В веб приложении реализованы: обработка POST запроса и последующая отправка писем по SMTP с сохранением лога в реляционной БД, 
+обработка GET запроса на получения всех писем и информации по каждому из БД.
+На странице вывода всех писем /mails при нажатии на строку с письмом выпадает таблица с получателями письма и логом успеха/неуспеха отправки.
 
-Реализована отправка писем по SMTP.
+Для тестирования API помимо веб-интерфейса приложения есть Swagger.
 
-<CardDeck>
+Приложение протестировано на ethereal.email и gmail.com.
+
+<CardDeck Margin="Margin.Is2">
     <Card>
-        <CardTitle>
+        <CardTitle Margin="Margin.Is3">
             <h3>Посмотреть методы API в Swagger</h3>
         </CardTitle>
         <CardBody>
@@ -18,19 +26,23 @@
         </CardBody>
     </Card>
     <Card>
-        <CardTitle>
+        <CardTitle Margin="Margin.Is3">
             <h3>Отправить письмо</h3>
         </CardTitle>
-        <Button Type="ButtonType.Link" Color=" Color.Primary" To="/send" Float="Float.Default" Size="Size.Medium" TextAlignment="TextAlignment.Center">
-            <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ArrowRight" /> Перейти
-        </Button>
+        <CardBody >
+            <Button Type="ButtonType.Link" Color=" Color.Primary" To="/send" Float="Float.Default" Size="Size.Medium" TextAlignment="TextAlignment.Center">
+                <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ArrowRight" /> Перейти
+            </Button>
+        </CardBody>
     </Card>
     <Card>
-        <CardTitle>
+        <CardTitle Margin="Margin.Is3">
             <h3>Посмотреть письма в табличном виде</h3>
         </CardTitle>
-        <Button Type="ButtonType.Link" Color=" Color.Primary" To="/mails" Float="Float.Default" Size="Size.Medium" TextAlignment="TextAlignment.Center">
-            <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ArrowRight" /> Перейти
-        </Button>
+        <CardBody >
+            <Button Type="ButtonType.Link" Color=" Color.Primary" To="/mails" Float="Float.Default" Size="Size.Medium" TextAlignment="TextAlignment.Center">
+                <Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.ArrowRight" /> Перейти
+            </Button>
+        </CardBody>
     </Card>
 </CardDeck>

@@ -6,6 +6,19 @@
 
 <PageTitle>Отправить письмо</PageTitle>
 
+<hr />
+<h2 style="text-align: center">Создать и отправить письмо</h2>
+<hr />
+
+<Breadcrumb Mode="BreadcrumbMode.Auto">
+    <BreadcrumbItem>
+        <BreadcrumbLink To="/">Главная</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbItem>
+        <BreadcrumbLink To="/send">Отправка письма</BreadcrumbLink>
+    </BreadcrumbItem>
+</Breadcrumb>
+
 <h6>Тема письма</h6>
 <TextEdit id="Title" class="form-control" @ref="subject">
 </TextEdit>
@@ -67,11 +80,15 @@
 
     public async Task SendEmail()
     {
-        createMailModel.Subject = subject.Text;
-        createMailModel.Body = await body.GetHtmlAsync();
-        createMailModel.Recipients = ParseEmails(recipients.Text);
-        var httpResponse = await Http.PostAsJsonAsync<CreateMailModel>("api/Mails", createMailModel);
+        if (subject.Text != null && recipients.Text != null)
+        {
+            createMailModel.Subject = subject.Text;
+            createMailModel.Body = await body.GetHtmlAsync();
+            createMailModel.Recipients = ParseEmails(recipients.Text);
+            var httpResponse = await Http.PostAsJsonAsync<CreateMailModel>("api/Mails", createMailModel);
 
+            NavigationManager.NavigateTo("/");
+        }
     }
 
     public static List<string> ParseEmails(string input)

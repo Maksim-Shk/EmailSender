@@ -8,6 +8,19 @@
 
 <PageTitle>Просмотр писем</PageTitle>
 
+<hr />
+<h2 style="text-align: center">Просмотр писем</h2>
+<hr />
+
+<Breadcrumb Mode="BreadcrumbMode.Auto">
+    <BreadcrumbItem>
+        <BreadcrumbLink To="/">Главная</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbItem>
+        <BreadcrumbLink To="/mails">Просмотр всех писем</BreadcrumbLink>
+    </BreadcrumbItem>
+</Breadcrumb>
+
 <DataGrid TItem="GetAllMailsModel"
           Data="@mailListVm.Mails"
           Responsive
@@ -17,29 +30,37 @@
           ShowPager
           ShowPageSizes
           PagerPosition="DataGridPagerPosition.Bottom"
-          PagerOptions="new(){ ButtonSize=Blazorise.Size.Medium}">
+          PagerOptions="new(){ ButtonSize=Blazorise.Size.Medium}"
+          @bind-SelectedRow="@selectMail"
+          DetailRowTrigger="@((e) => e.Item.SentMails?.Count > 0 && e.Item.MailId == selectMail?.MailId)">
 
     <DataGridColumns>
-        <DataGridColumn Field="@nameof(GetAllMailsModel.Subject)" Caption="Тема">
-            <DisplayTemplate>
-                @{
-                    var subject = (context as GetAllMailsModel)?.Subject;
-                    var id = (context as GetAllMailsModel)?.MailId;
-                    if (subject != null)
-                    {
-                        <a href="Mail/@id">@subject</a>
-                    }
-                }
-            </DisplayTemplate>
-        </DataGridColumn>
+        <DataGridColumn Field="@nameof(GetAllMailsModel.Subject)" Caption="Тема"></DataGridColumn>
         <DataGridColumn Field="@nameof(GetAllMailsModel.Sender)" Caption="Отправитель"></DataGridColumn>
         <DataGridColumn Field="@nameof(GetAllMailsModel.CreatedDate)" Caption="Дата создания"></DataGridColumn>
     </DataGridColumns>
+    <DetailRowTemplate>
+        @{
+            List<SentMailModel> recipients = (context as GetAllMailsModel).SentMails;
+            var bodyText = new MarkupString((context as GetAllMailsModel).Body);
+            <Div>@bodyText</Div>
+            <DataGrid TItem="SentMailModel"
+                      Data = 'recipients'
+                      Sortable = "true"
+                      ShowCaptions="true">
+                    <DataGridCommandColumn />
+                    <DataGridColumn Field="@nameof(SentMailModel.Recipient)" Caption="Получатель"></DataGridColumn>
+                    <DataGridColumn Field="@nameof(SentMailModel.Result)" Caption="Результат"></DataGridColumn>
+                    <DataGridColumn Field="@nameof(SentMailModel.FailedMessage)" Caption="Описание ошибки"></DataGridColumn>
+            </DataGrid>
+        }
+    </DetailRowTemplate>
 
 </DataGrid>
 
-
 @code {
+    private GetAllMailsModel selectMail = new();
+
     private MailListVm mailListVm = new();
     protected override async Task OnInitializedAsync()
     {

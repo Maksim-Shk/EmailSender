@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EmailSender.Persistence.Migrations
 {
     [DbContext(typeof(MailContext))]
-    [Migration("20230702211153_InitialCreate")]
+    [Migration("20230703052401_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
