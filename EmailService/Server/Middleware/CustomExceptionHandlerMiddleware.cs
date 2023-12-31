@@ -1,9 +1,6 @@
 ﻿using System.Net;
 using System.Text.Json;
-using FluentValidation;
-using Microsoft.AspNetCore.Http;
 using EmailSender.Application.Common.Exceptions;
-using System.ComponentModel.DataAnnotations;
 
 namespace EmailSender.Server.Middleware
 {
